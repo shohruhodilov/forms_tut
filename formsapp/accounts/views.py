@@ -1,6 +1,7 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 
+
+from django.shortcuts import render
+from .models import Product
 
 def home(request):
 
@@ -8,7 +9,13 @@ def home(request):
 
 
 def products(request):
-
+    name=['salom', 'salom2', 'salom3']
+    a= Product.objects.filter(name__in=name)
+    print(a)
+    b = Product.objects.filter(name__iexact=name)
+    print(b)
+    c= Product.objects.all()
+    print(c)
     return render(request, 'products.html')
 
 
